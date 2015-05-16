@@ -53,8 +53,10 @@ public class ImageAdapter extends BaseAdapter {
                 .placeholder(R.drawable.place_holder) //
                 .error(R.drawable.ic_launcher) //
                 .fit() //
-                .tag(context) //
+                .tag(url) //
                 .into(view);
+
+        view.setTag(R.id.fullscreen_image, url);
 
         return view;
     }

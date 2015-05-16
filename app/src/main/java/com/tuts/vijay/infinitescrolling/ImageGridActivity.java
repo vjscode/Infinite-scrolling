@@ -1,15 +1,20 @@
 package com.tuts.vijay.infinitescrolling;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 public class ImageGridActivity extends Activity {
 
     ImageAdapter adapter;
     GridView gridView;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,8 @@ public class ImageGridActivity extends Activity {
         setContentView(R.layout.activity_image_grid);
         gridView = (GridView) findViewById(R.id.imgGrid);
         gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(itemClickListener);
+        context = this;
     }
 
 
@@ -39,4 +46,14 @@ public class ImageGridActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            String url = (String) view.getTag(R.id.fullscreen_image);
+            Intent intent = new Intent(context, ImageDetailActivity.class);
+            intent.putExtra("url", url);
+            startActivity(intent);
+        }
+    };
 }
