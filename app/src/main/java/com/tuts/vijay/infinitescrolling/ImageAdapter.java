@@ -41,7 +41,7 @@ public class ImageAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater)context.getSystemService
                     (Context.LAYOUT_INFLATER_SERVICE);
             view = (ImageView) inflater.inflate(R.layout.grid_image, null);
-            view.setScaleType(ImageView.ScaleType.FIT_XY);
+            view.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
 
         // Get the image URL for the current position.
